@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/widgets/InputCustom.dart';
 import 'package:flutter_application/widgets/buttonCustom.dart';
-import 'package:flutter_application/animations/StaggeredFade.dart';
+import 'package:flutter_application/animation/animationFade.dart';
+import 'package:flutter_application/widgets/subTittleCustom.dart';
+import 'package:flutter_application/widgets/titleCustom.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -42,27 +44,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 StaggeredFade(
                   index: 1,
-                  child: const Text(
-                    "Crie sua conta",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  child: const TitleCustom(title: "Crie sua conta"),
                 ),
 
                 const SizedBox(height: 8),
 
                 StaggeredFade(
                   index: 2,
-                  child: const Text(
-                    "Comece sua jornada fitness agora",
-                    style: TextStyle(
-                      color: Colors.white54,
-                      fontSize: 14,
-                    ),
-                  ),
+                  child: const  SubTitleCustom(subTitle: "Comece sua jornada fitness agora"),
                 ),
 
                 const SizedBox(height: 32),

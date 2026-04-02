@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application/widgets/buttonCustom.dart';
+import 'package:flutter_application/widgets/subTittleCustom.dart';
+import 'package:flutter_application/widgets/titleCustom.dart';
 import 'widgets/InputCustom.dart';
 import 'routes/routes.dart';
-import 'animations/StaggeredFade.dart';
+import 'animation/animationFade.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -61,26 +63,13 @@ class _LoginPageState extends State<LoginPage> {
 
     StaggeredFade(
       index: 1,
-      child: const Text(
-        "Bem-vindo",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 22,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
+      child: const TitleCustom(title: "Bem-vindo"),
     ),
     const SizedBox(height: 8),
 
     StaggeredFade(
       index: 2,
-      child: const Text(
-        "Entre na sua conta para continuar",
-        style: TextStyle(
-          color: Colors.white54,
-          fontSize: 14,
-        ),
-      ),
+      child: const SubTitleCustom(subTitle: "Entre com sua Conta"),
     ),
     const SizedBox(height: 32),
 
