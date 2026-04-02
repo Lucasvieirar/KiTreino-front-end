@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_application/widgets/buttonCustom.dart';
+import 'widgets/InputCustom.dart';
+import 'routes/routes.dart';
+import 'animations/StaggeredFade.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -9,9 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      initialRoute: AppRoutes.login,
+      routes: AppRoutes.routes,
+
     );
   }
 }
@@ -24,7 +29,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool _obscurePassword = true;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -34,162 +39,129 @@ class _LoginPageState extends State<LoginPage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Ícone substituindo a logo
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Icon(
-                    Icons.fitness_center,
-                    size: 40,
-                    color: Color(0xFF00C853),
-                  ),
-                ),
+            child:Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    StaggeredFade(
+      index: 0,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: const Icon(
+          Icons.fitness_center,
+          size: 40,
+          color: Color(0xFF00C853),
+        ),
+      ),
+    ),
+    const SizedBox(height: 32),
 
-                const SizedBox(height: 32),
+    StaggeredFade(
+      index: 1,
+      child: const Text(
+        "Bem-vindo",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+    const SizedBox(height: 8),
 
-                const Text(
-                  "Bem-vindo de volta",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+    StaggeredFade(
+      index: 2,
+      child: const Text(
+        "Entre na sua conta para continuar",
+        style: TextStyle(
+          color: Colors.white54,
+          fontSize: 14,
+        ),
+      ),
+    ),
+    const SizedBox(height: 32),
 
-                const SizedBox(height: 8),
+    StaggeredFade(
+      index: 3,
+      child: InputCustom(
+        hint: "email",
+        keyboardType: TextInputType.emailAddress,
+        prefixIcon: Icon(Icons.email, color: Colors.white54),
+      ),
+    ),
+    const SizedBox(height: 16),
 
-                const Text(
-                  "Entre na sua conta para continuar",
-                  style: TextStyle(
-                    color: Colors.white54,
-                    fontSize: 14,
-                  ),
-                ),
+    StaggeredFade(
+      index: 4,
+      child: InputCustom(
+        hint: "senha",
+        isPassword: true,
+        prefixIcon: Icon(Icons.lock, color: Colors.white54),
+      ),
+    ),
+    const SizedBox(height: 12),
 
-                const SizedBox(height: 32),
-
-                // Campo email
-                _buildInputField(
-                  hint: "Seu e-mail",
-                ),
-
-                const SizedBox(height: 16),
-
-                // Campo senha
-                _buildInputField(
-                  hint: "Sua senha",
-                  isPassword: true,
-                ),
-
-                const SizedBox(height: 12),
-
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Esqueceu a senha?",
-                      style: TextStyle(
-                        color: Color(0xFF00C853),
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 12),
-
-                // Botão Entrar
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF00C853),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    child: const Text(
-                      "Entrar",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 20),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Não tem uma conta? ",
-                      style: TextStyle(color: Colors.white54),
-                    ),
-                    Text(
-                      "Cadastre-se",
-                      style: TextStyle(
-                        color: Color(0xFF00C853),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+    StaggeredFade(
+      index: 5,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: TextButton(
+          onPressed: () {},
+          child: const Text(
+            "Esqueceu a senha?",
+            style: TextStyle(
+              color: Color(0xFF00C853),
+              fontSize: 14,
             ),
+          ),
+        ),
+      ),
+    ),
+    const SizedBox(height: 12),
+
+    StaggeredFade(
+      index: 6,
+      child: ButtonCustom(
+        text: "Entrar",
+        onPressed: () {},
+      ),
+    ),
+    const SizedBox(height: 20),
+
+    StaggeredFade(
+      index: 7,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "Não tem uma conta? ",
+            style: TextStyle(color: Colors.white54),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, AppRoutes.register);
+            },
+            child: const Text(
+              "Cadastre-se",
+              style: TextStyle(
+                color: Color(0xFF00C853),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  ],
+)
           ),
         ),
       ),
     );
   }
 
-  Widget _buildInputField({
-    required String hint,
-    bool isPassword = false,
-  }) {
-    return TextField(
-      obscureText: isPassword ? _obscurePassword : false,
-      style: const TextStyle(color: Colors.white),
-      decoration: InputDecoration(
-        hintText: hint,
-        hintStyle: const TextStyle(color: Colors.white54),
-        filled: true,
-        fillColor: const Color(0xFF1C242C),
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 16,
-          horizontal: 16,
-        ),
-        suffixIcon: isPassword
-            ? IconButton(
-                icon: Icon(
-                  _obscurePassword
-                      ? Icons.visibility_off_outlined
-                      : Icons.visibility_outlined,
-                  color: Colors.white54,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _obscurePassword = !_obscurePassword;
-                  });
-                },
-              )
-            : null,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide.none,
-        ),
-      ),
-    );
+  
   }
-}
