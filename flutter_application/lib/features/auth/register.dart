@@ -49,9 +49,25 @@ class _RegisterPageState extends State<RegisterPage> {
           textInputAction: TextInputAction.done,
           prefixIcon: const Icon(Icons.lock, color: AppColors.iconDefault),
         ),
+          Align(
+          alignment: Alignment.centerRight,
+          child: TextButton(
+            onPressed: () {},
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.zero,
+              minimumSize: Size.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            child: const Text('Já tem conta?', style: AppTypography.linkText),
+          ),
+        ),
         AppButton(text: 'Criar Conta', onPressed: _handleRegister),
+
+      
       ],
+      
     );
+    
   }
 
   void _handleRegister() {
